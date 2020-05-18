@@ -14,7 +14,7 @@ namespace WolvesAndRabbitsSimulation.Engine
         private const int width = 255;
         private const int height = 255;
         private Size size = new Size(width, height);
-        private GameObject[] objects = new GameObject[0];
+        private List<GameObject> objects = new List<GameObject>();
 
         public IEnumerable<GameObject> GameObjects
         {
@@ -44,12 +44,12 @@ namespace WolvesAndRabbitsSimulation.Engine
 
         public void Add(GameObject obj)
         {
-            objects = objects.Concat(new GameObject[] { obj }).ToArray();
+            objects.Add(obj);
         }
 
         public void Remove(GameObject obj)
         {
-            objects = objects.Where(o => o != obj).ToArray();
+            objects.Remove(obj);
         }
 
         public virtual void Update()
