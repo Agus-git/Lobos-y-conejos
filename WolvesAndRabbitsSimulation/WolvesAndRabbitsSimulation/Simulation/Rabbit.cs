@@ -58,7 +58,7 @@ namespace WolvesAndRabbitsSimulation.Simulation
                     {
                         Rabbit bunny = new Rabbit();
                         bunny.Position = Position;
-                        forest.Add(bunny);
+                        forest.AddRabit(bunny);
                     }
                 }
             }
@@ -80,7 +80,7 @@ namespace WolvesAndRabbitsSimulation.Simulation
         {
             if (forest.Random(1, 10) <= 10 * DEATH_PROBABILITY)
             {
-                forest.Remove(this);
+                forest.RemoveRabit(this);
             }
         }
 

@@ -113,9 +113,10 @@ namespace WolvesAndRabbitsSimulation
                     Grass grass = new Grass();
                     grass.Position = new Point(x, y);
                     grass.Growth = world.Random(0, 50);
-                    world.Add(grass);
+                    world.AddGrass(grass);
                 }
             }
+            world.UnPocoDeOrden();
         }
 
         private void SpawnSomeRabbits()
@@ -133,7 +134,7 @@ namespace WolvesAndRabbitsSimulation
                 {
                     rabbit.Position = new Point(rabbit.Position.X, 0);
                 }
-                world.Add(rabbit);
+                world.AddRabit(rabbit);
             }
         }
 

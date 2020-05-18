@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WolvesAndRabbitsSimulation.Simulation;
 
 namespace WolvesAndRabbitsSimulation.Engine
 {
@@ -14,13 +15,15 @@ namespace WolvesAndRabbitsSimulation.Engine
         private const int width = 255;
         private const int height = 255;
         private Size size = new Size(width, height);
-        private List<GameObject> objects = new List<GameObject>();
-
+        List<Rabbit> Conejera = new List<Rabbit>();
+        List<Grass> Pasto = new List<Grass>();
+        Grass[] Garden = new Grass[0];
         public IEnumerable<GameObject> GameObjects
         {
             get
             {
-                return objects.ToArray();
+                List<GameObject> a = new List<GameObject>();
+                return a.Concat(Garden).Concat(Conejera).ToArray();
             }
         }
 
@@ -42,14 +45,23 @@ namespace WolvesAndRabbitsSimulation.Engine
             return rnd.Next(min, max);
         }
 
-        public void Add(GameObject obj)
+        public void AddRabit(Rabbit obj)
         {
-            objects.Add(obj);
+            Conejera.Add(obj);
+        }
+        public void AddGrass(Grass grass)
+        {
+            Pasto.Add(grass);
         }
 
-        public void Remove(GameObject obj)
+        public void RemoveRabit(Rabbit obj)
         {
-            objects.Remove(obj);
+            Conejera.Remove(obj);
+        }
+
+        public void UnPocoDeOrden()
+        {
+            Garden = Pasto.ToArray();
         }
 
         public virtual void Update()
@@ -98,5 +110,20 @@ namespace WolvesAndRabbitsSimulation.Engine
                     && Dist(pos, center) <= bounds.Height / 2.0f;
             });
         }
+
+        /*internal Grass PastoQuePiso(Rabbit rabbit)
+        {
+            int lugarX = rabbit.Position.X;
+            int lugarY = rabbit.Position.Y;
+            int aproximacion = lugarX + (width * lugarY);
+
+            for (int x = lugarX; x < Grass.PATCH_SIZE + lugarX; x += Grass.PATCH_SIZE)
+            {
+                for (int y = aproximacion; y < aproximacion + (width * Grass.PATCH_SIZE); y += (width * Grass.PATCH_SIZE))
+                {
+
+                }
+            }
+        }*/
     }
 }
