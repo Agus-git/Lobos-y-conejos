@@ -50,7 +50,7 @@ namespace WolvesAndRabbitsSimulation.Simulation
         private void Breed(World forest)
         {
             if (age < ADULTHOOD || food < FOOD_TO_BREED) return;
-            if (forest.ObjectsAt(Position).Any(o => o is Rabbit && o != this))
+            if (forest.BuscarConejos(Position))
             {
                 for (int i = 0; i < MAX_CHILDREN; i++)
                 {

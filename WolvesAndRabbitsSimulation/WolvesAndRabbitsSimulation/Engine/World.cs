@@ -54,6 +54,17 @@ namespace WolvesAndRabbitsSimulation.Engine
             Pasto.Add(grass);
         }
 
+        internal bool BuscarConejos(Point position)
+        {
+            byte contador = 0;
+            foreach (Rabbit item in Conejera)
+            {
+                if (item.Position == position)
+                    contador++;
+            }
+            return contador > 1;
+        }
+
         public void RemoveRabit(Rabbit obj)
         {
             Conejera.Remove(obj);
@@ -97,18 +108,6 @@ namespace WolvesAndRabbitsSimulation.Engine
         public double Dist(PointF a, PointF b)
         {
             return Math.Sqrt(Math.Pow(a.X - b.X, 2) + Math.Pow(a.Y - b.Y, 2));
-        }
-
-        public IEnumerable<GameObject> ObjectsAt(Point pos)
-        {
-            return GameObjects.Where(each =>
-            {
-                Rectangle bounds = each.Bounds;
-                PointF center = new PointF((bounds.Left + bounds.Right - 1) / 2.0f,
-                                           (bounds.Top + bounds.Bottom - 1) / 2.0f);
-                return Dist(pos, center) <= bounds.Width / 2.0f
-                    && Dist(pos, center) <= bounds.Height / 2.0f;
-            });
         }
 
         internal Grass PastoQuePiso(Point rabbit)
