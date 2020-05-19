@@ -111,19 +111,31 @@ namespace WolvesAndRabbitsSimulation.Engine
             });
         }
 
-        /*internal Grass PastoQuePiso(Rabbit rabbit)
+        internal Grass PastoQuePiso(Point rabbit)
         {
-            int lugarX = rabbit.Position.X;
-            int lugarY = rabbit.Position.Y;
-            int aproximacion = lugarX + (width * lugarY);
+            int lugarX = rabbit.X / 2;
+            int lugarY = rabbit.Y / 2;
+            int aproximacion = (lugarX) + (width / 2 * (lugarY));
+            int ancho = 128;
+            List<Grass> area = new List<Grass>();
 
-            for (int x = lugarX; x < Grass.PATCH_SIZE + lugarX; x += Grass.PATCH_SIZE)
+            if (lugarY == 127)
+                lugarY--;
+            if (lugarX == 127)
+                lugarX--;
+
+            for (int x = lugarX; x < Grass.PATCH_SIZE + lugarX; x++)
             {
-                for (int y = aproximacion; y < aproximacion + (width * Grass.PATCH_SIZE); y += (width * Grass.PATCH_SIZE))
+                for (int y = lugarY * ancho; y < (lugarY + Grass.PATCH_SIZE) * ancho; y += ancho)
                 {
+                    Grass a = Garden[y + x];
+                    if (a.Position == rabbit)
+                        return a;
 
+                    area.Add(a);
                 }
             }
-        }*/
+            return area[0];
+        }
     }
 }

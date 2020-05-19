@@ -37,7 +37,7 @@ namespace WolvesAndRabbitsSimulation.Simulation
 
         private void EatSomeGrass(World forest)
         {
-            Grass grass = forest.ObjectsAt(Position).Select(o => o as Grass).First(o => o != null);
+            Grass grass = forest.PastoQuePiso(Position);
             int amount = FOOD_CONSUMPTION * 2;
             if (grass.Growth < amount)
             {

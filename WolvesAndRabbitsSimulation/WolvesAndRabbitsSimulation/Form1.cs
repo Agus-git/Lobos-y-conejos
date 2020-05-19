@@ -106,9 +106,9 @@ namespace WolvesAndRabbitsSimulation
 
         private void FillWithGrass()
         {
-            for (int x = 0; x < world.Width; x += Grass.PATCH_SIZE)
+            for (int y = 0; y < world.Width; y += Grass.PATCH_SIZE)
             {
-                for (int y = 0; y < world.Height; y += Grass.PATCH_SIZE)
+                for (int x = 0; x < world.Height; x += Grass.PATCH_SIZE)
                 {
                     Grass grass = new Grass();
                     grass.Position = new Point(x, y);
