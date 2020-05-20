@@ -21,6 +21,11 @@ namespace WolvesAndRabbitsSimulation.Simulation
         private int age = 0;
         private int food = 500;
 
+        public int Edad
+        {
+            get { return age; }
+        }
+
         public Rabbit()
         {
             Color = Color.White;
@@ -50,7 +55,7 @@ namespace WolvesAndRabbitsSimulation.Simulation
         private void Breed(World forest)
         {
             if (age < ADULTHOOD || food < FOOD_TO_BREED) return;
-            if (forest.BuscarConejos(Position))
+            if (forest.BuscarConejos(Position, ADULTHOOD))
             {
                 for (int i = 0; i < MAX_CHILDREN; i++)
                 {

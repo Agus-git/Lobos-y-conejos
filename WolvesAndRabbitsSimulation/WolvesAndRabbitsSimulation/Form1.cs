@@ -51,14 +51,8 @@ namespace WolvesAndRabbitsSimulation
 
         private void InitializeWorld()
         {
-            var reloj = Stopwatch.StartNew();
             FillWithGrass();
             SpawnSomeRabbits();
-            reloj.Stop();
-            using (StreamWriter stream = new StreamWriter("Medicion.txt", true))
-            {
-                stream.WriteLine(reloj.Elapsed.TotalSeconds);
-            }
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)

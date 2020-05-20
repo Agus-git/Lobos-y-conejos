@@ -54,12 +54,12 @@ namespace WolvesAndRabbitsSimulation.Engine
             Pasto.Add(grass);
         }
 
-        internal bool BuscarConejos(Point position)
+        internal bool BuscarConejos(Point position, int aDULTHOOD)
         {
             byte contador = 0;
             foreach (Rabbit item in Conejera)
             {
-                if (item.Position == position)
+                if (item.Position == position && item.Edad > aDULTHOOD)
                     contador++;
             }
             return contador > 1;
