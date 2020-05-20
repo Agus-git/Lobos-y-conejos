@@ -63,7 +63,11 @@ namespace WolvesAndRabbitsSimulation
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.ScaleTransform(scale, scale);
+            e.Graphics.ScaleTransform(scale, scale);/*
+            Brush RabbitBrush = new Pen(Exper1.Color).Brush;
+            Rectangle RabbitRectangle = new Rectangle(0, 0, 1,1);
+            Pen GrassPen = new Pen(Exper2.Color);
+            Rectangle GrassRectangle = new Rectangle(0, 0, Grass.PATCH_SIZE, Grass.PATCH_SIZE);*/
             world.DrawOn(e.Graphics);
         }
                 

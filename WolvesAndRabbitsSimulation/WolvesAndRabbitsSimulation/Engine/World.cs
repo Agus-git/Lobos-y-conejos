@@ -73,6 +73,10 @@ namespace WolvesAndRabbitsSimulation.Engine
         public void UnPocoDeOrden()
         {
             Garden = Pasto.ToArray();
+            for (int i = 0; i <= 255; i++)
+            {
+                Degradado[i] = new Pen(Color.FromArgb(i, 0, 255, 0)).Brush;
+            }
         }
 
         public virtual void Update()
@@ -83,12 +87,22 @@ namespace WolvesAndRabbitsSimulation.Engine
                 obj.Position = PositiveMod(obj.Position, size);
             }
         }
+        Brush RabbitBrush = new Pen(Color.White).Brush;
+        Brush[] Degradado = new Brush[256];
+        Rectangle RabbitRectangle = new Rectangle(0,0,1,1);
+        Rectangle GrassRectangle = new Rectangle(0, 0, Grass.PATCH_SIZE, Grass.PATCH_SIZE);
 
         public virtual void DrawOn(Graphics graphics)
         {
-            foreach (GameObject obj in GameObjects)
+            for (int i = 0; i < Conejera.Count - 1; i++)
             {
-                graphics.FillRectangle(new Pen(obj.Color).Brush, obj.Bounds);
+                RabbitRectangle.Location = Conejera[i].Position;
+                graphics.FillRectangle(RabbitBrush, RabbitRectangle);
+            }
+            for (int i = 0; i < Garden.Length - 1; i++)
+            {
+                GrassRectangle.Location = Garden[i].Position;
+                graphics.FillRectangle(Degradado[Garden[i].Growth], GrassRectangle);
             }
         }
 
